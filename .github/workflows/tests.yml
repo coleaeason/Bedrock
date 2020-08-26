@@ -1,4 +1,4 @@
-name: Integration Tests
+name: All Tests
 
 on:
   push:
@@ -8,10 +8,12 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-16.04
-
     steps:
     - uses: actions/checkout@v2
-    - name: tests
-      run: ./travis.sh
+    - name: Compile
+      run: make -j8
+    - name: Bedrock Tests
+      run: cd test && ./test -threads 8
+    - name: Cluster Tests
+      run: cd clustertests && ./clustertest -threads 8
