@@ -16,4 +16,4 @@ jobs:
     - name: Bedrock Tests
       run: cd test && ./test -threads 8
     - name: Cluster Tests
-      run: cd clustertest && ./clustertest -threads 8
+      run: cd test/clustertest && ./clustertest -threads 8
