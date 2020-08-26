@@ -2,7 +2,7 @@ name: Integration Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ cole_test_actions, master ]
   pull_request:
     branches: [ master ]
 
