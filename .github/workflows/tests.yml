@@ -19,8 +19,10 @@ jobs:
         path: |
           bedrock
           test/test
+          test/sample_data/
           test/clustertest/clustertest
           test/clustertest/testplugin/testplugin.so
+        if-no-files-found: error
   bedrock_tests:
       runs-on: ubuntu-16.04
       needs: build
