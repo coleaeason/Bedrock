@@ -32,7 +32,7 @@ jobs:
         with:
           name: binaries
       - name: Bedrock Tests
-        run: chmod +x bedrock && cd test && chmod +x test && ./test -threads 32
+        run: chmod +x bedrock && cd test && chmod +x test && ./test -threads 8
   cluster_tests:
       runs-on: ubuntu-16.04
       needs: build
@@ -42,4 +42,4 @@ jobs:
         with:
           name: binaries
       - name: Cluster Tests
-        run: chmod +x bedrock && cd test/clustertest && chmod +x clustertest && ./clustertest -threads 32  
+        run: chmod +x bedrock && cd test/clustertest && chmod +x clustertest && ./clustertest -threads 8  
