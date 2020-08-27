@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile
-      run: make -j6
+      run: make -j4
     - uses: actions/upload-artifact@v2
       with:
         name: binaries
