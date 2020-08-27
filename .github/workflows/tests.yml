@@ -12,8 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile
-      run: make -j8
+      run: make -j6
     - name: Bedrock Tests
-      run: cd test && ./test -threads 8
+      run: cd test && ./test -threads 6
     - name: Cluster Tests
-      run: cd test/clustertest && ./clustertest -threads 8
+      run: cd test/clustertest && ./clustertest -threads 6
