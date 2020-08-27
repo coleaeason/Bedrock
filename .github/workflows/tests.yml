@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile
-      run: make -j24
+      run: make -j 6
     - uses: actions/upload-artifact@v2
       with:
         name: binaries
@@ -32,7 +32,7 @@ jobs:
         with:
           name: binaries
       - name: Bedrock Tests
-        run: chmod +x bedrock && cd test && chmod +x test && ./test -threads 24
+        run: chmod +x bedrock && cd test && chmod +x test && ./test -threads 32
   cluster_tests:
       runs-on: ubuntu-16.04
       needs: build
@@ -42,4 +42,4 @@ jobs:
         with:
           name: binaries
       - name: Cluster Tests
-        run: chmod +x bedrock && cd test/clustertest && chmod +x clustertest && ./clustertest -threads 24  
+        run: chmod +x bedrock && cd test/clustertest && chmod +x clustertest && ./clustertest -threads 32  
