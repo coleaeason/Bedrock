@@ -13,7 +13,30 @@ jobs:
     - uses: actions/checkout@v2
     - name: Compile
       run: make -j6
-    - name: Bedrock Tests
-      run: cd test && ./test -threads 6
-    - name: Cluster Tests
-      run: cd test/clustertest && ./clustertest -threads 6
+    - uses: actions/upload-artifact@v2
+      with:
+        name: binaries
+        path: |
+          bedrock
+          test/test
+          test/clustertest/clustertest
+  bedrock_tests:
+      runs-on: ubuntu-16.04
+      needs: build
+      steps:
+      - name: Download binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: binaries
+      - name: Bedrock Tests
+        run: cd test && ./test -threads 6
+  cluster_tests:
+      runs-on: ubuntu-16.04
+      needs: build
+      steps:
+      - name: Download binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: binaries
+      - name: Cluster Tests
+        run: cd test/clustertest && ./clustertest -threads 6  
